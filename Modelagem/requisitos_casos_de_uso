@@ -1,0 +1,185 @@
+Estudo de Caso 02
+Salão de Beleza
+
+Criado por: Raquel Costa Neia
+
+
+Requisitos Funcionais
+RF001 – Cadastrar agendamentos de serviços oferecidos pelo Salão (cortes de cabelo, coloração, tratamentos faciais, manicure, pedicure).
+RF002 – Consultar disponibilidade de agendamentos (data e horário).
+RF003 – Cadastrar nome de clientes e funcionários.
+RF004 – Cadastrar a especialidade de cada profissional.
+RF005 – Permitir que o cliente selecione o profissional de preferência
+RF006 – Permitir agendamento para compra de produtos.
+RF007 – Consultar lista de produtos disponíveis.
+
+Requisitos Não-Funcionais
+RNF001 – Usabilidade:
+Trata-se de quão intuitivo e agradável o sistema é para o usuário.
+•	RNF001.A - Acesso web: 
+O sistema será acessado via internet usando um navegador web, exigindo uma conexão de banda larga de pelo menos 1 MBit/s e um navegador Internet Explorer 7.0 ou superior, FireFox, Google Chrome. Usuários podem acessar o sistema de qualquer computador que atenda a esses requisitos. 
+•	RNF001.B - Interface amigável:
+O idioma da interface será em português e não haverá palavras de difícil compreensão. Logo ao acessar o site o usuário deverá entrar com login e senha para ter acesso ao sistema. Caso haja algum erro na autenticação destes dados, o sistema não permitirá que o usuário se logue e exibirá uma mensagem informando que houve um erro nas informações inseridas e dará a opção a ser clicada "Esqueci minha senha".
+
+RNF002 – Acessibilidade:
+O sistema incluirá recursos de acessibilidade para portadores de deficiência visuais e auditivas. 
+•	RNF002. A - Deficiência visual:
+Todos os elementos interativos (botões, menus, cartas, placares) devem ter textos alternativos claros e descritivos para serem corretamente lidos pelo leitor de tela.
+O layout do sistema deve ser projetado de forma a ser facilmente navegado sem o uso de mouse, utilizando navegação por teclado ou atalhos configuráveis.
+O sistema deve permitir que o usuário ajuste o contraste das cores ou use um modo de alto contraste para facilitar a visualização para jogadores com baixa visão.
+•	RNF002.B - Deficiência auditiva
+Todas as notificações sonoras do sistema, como o toque ao ganhar uma mão ou a indicação de vitórias, deverão ser acompanhadas por sinais visuais claros, como ícones ou mensagens na tela.
+O sistema deve fornecer transcrição de todas as interações importantes, como instruções, alertas e mensagens de chat.
+
+RNF003 - Confiabilidade:
+Um sistema confiável é aquele que, quando utilizado, mantém seu desempenho de forma estável e sem erros graves
+
+•	RNF003. A - Backup de dados:
+ Backup de dados com informações de usuário (nome, informações pessoais como email, senha, data de nascimento, etc), produtos (estoque) e histórico de agendamentos.
+As  informações são exportadas e salvas em arquivos .txt nas pastas de backup, a cada 1 hora. Essas pastas são nomeadas pelos dias e horas de modificações, para posteriormente serem exportadas para um banco de dados.
+
+RNF004 – Segurança:
+Capacidade de um sistema de proteger dados e informações contra acessos não autorizados, garantindo que informações sensíveis sejam tratadas de maneira segura e confidencial.
+•	RNF004. A - Login e senha
+Login e senha são usados para identificação de um usuário e são checados e validados pelo sistema sempre que o usuário quiser acessá-lo. Estes dados serão cadastrados pelo e salvos no banco de dados. A senha será armazenada de forma criptografada.
+•	RNF004. B - Logoff automático
+O usuário será automaticamente desconectado do sistema, caso sua tela permaneça inativa por um período igual ou superior a 5 minutos
+
+Regras de Negócio
+RN001 – Os serviços só podem ser agendados conforme disponibilidade do profissional.
+•	Limitando o agendamento apenas a horários livres do profissional.
+
+RN002 – Cada agendamento deve conter data, horário, nome do cliente e profissional designado.
+•	Define quais campos são obrigatórios para um agendamento ser válido.
+
+Caso de Uso
+1) Agendar atendimento
+Ator: Cliente, Atendente
+Descrição: Permite agendar um atendimento no salão, escolhendo o tipo de serviço, profissional, data e horário.
+Inclui:
+Agendar serviço
+Informar dia/hora
+Informar dados do profissional
+Informar dados do cliente
+
+2) Agendar serviço
+Ator: Cliente
+Descrição: Seleciona o tipo de serviço a ser realizado (ex: corte, coloração, manicure, etc.)
+Relacionado a: Incluído no caso “Agendar atendimento”
+
+3) Informar dia/hora
+Ator: Cliente
+Descrição: Permite informar a data e horário desejados para o atendimento.
+Relacionado a: Incluído no caso “Agendar atendimento”
+
+4) Informar dados do profissional
+Ator: Cliente
+Descrição: Cliente informa o profissional de sua preferência.
+Relacionado a: Incluído no caso “Agendar atendimento”
+
+5) Informar dados do cliente
+Ator: Cliente
+Descrição: Permite fornecer informações básicas do cliente no momento do agendamento.
+Relacionado a: Incluído no caso “Agendar atendimento”
+
+6) Verificar disponibilidade
+Ator: Cliente, Atendente
+Descrição: Consulta se há horários e profissionais disponíveis para agendamento.
+
+7) Cadastrar profissional
+Ator: Gerente
+Descrição: Adiciona novos profissionais ao sistema.
+Inclui: Cadastrar especialidade
+
+8) Cadastrar especialidade
+Ator: Gerente
+Descrição: Define as especialidades (ex: cabeleireiro, manicure, etc.) associadas a um profissional.
+Relacionado a: Incluído no caso “Cadastrar profissional”
+
+9) Vender produtos
+Ator: Atendente
+Descrição: Realiza a venda de produtos de beleza disponíveis no salão.
+
+Especificação de casos de uso
+UC.01 - Agendar atendimento
+Ator: Cliente, Atendente
+Descrição: Permite agendar um atendimento no salão, escolhendo o tipo de serviço, profissional, data e horário.
+Pré-condição: Cliente deve possuir cadastro no sistema do salão
+RNF: Caso haja algum erro na autenticação de login, o sistema não permitirá que o usuário se logue e exibirá uma mensagem informando que houve um erro nas informações inseridas e dará a opção a ser clicada "Esqueci minha senha".
+Pós-condição: Cliente consegue agendar um atendimento
+•	Fluxo principal:
+Cliente loga no sistema
+Cliente seleciona um tipo de serviço oferecido pelo salão
+Escolhe o dia e horário de sua preferência
+Escolhe o profissional que esteja disponível de acordo com sua preferência
+Confirma o agendamento
+Sistema volta ao menu principal
+
+•	Fluxo alternativo: Erro de login
+Cliente insere seus dados de login incorretos
+Sistema exibe a mensagem de erro na autenticação de login
+Sistema exibe a opção de “Esqueci minha senha”
+Cliente clica nessa opção
+Cliente redefine a senha
+Cliente acessa o sistema
+Cliente seleciona um tipo de serviço oferecido pelo salão
+Escolhe o dia e horário de sua preferência
+Escolhe o profissional que esteja disponível de acordo com sua preferência
+Confirma o agendamento
+Sistema volta ao menu principal
+
+UC. 02 - Cadastrar profissional
+Ator: Gerente
+Descrição: Adiciona novos profissionais ao sistema.
+Pré-condição: O profissional não deve possuir cadastro no sistema
+Pós-condição: Profissional cadastrado no sistema
+
+•	Fluxo principal:
+Gerente acessa o sistema por login e senha como administrador
+Seleciona a opção “Cadastrar novo profissional”
+Informa o nome e especialidade do profissional
+Estabelece os dias e horários que o profissional possui agenda
+Salva as informações no banco de dado
+Sistema retorna ao menu principal
+
+•	Fluxo alternativo:
+Gerente acessa o sistema por login e senha como administrador
+Seleciona a opção “Cadastrar novo profissional”
+Informa o nome e especialidade do profissional
+O sistema verifica que já existe um profissional com o mesmo nome e especialidade cadastrado.
+O sistema exibe uma mensagem de erro: "Profissional já cadastrado."
+O gerente pode:
+1.	Tentar novamente com dados diferentes
+2.	Cancelar o cadastro e retornar ao menu principal.
+ 
+UC.03 – Vender produtos
+Ator Principal: Atendente
+Descrição: Realiza a venda de produtos de beleza disponíveis no salão para clientes.
+Pré-condição:
+1.	O atendente deve estar autenticado no sistema.
+2.	Deve haver produtos cadastrados e disponíveis em estoque.
+Pós-condição:
+1.	Venda registrada no sistema.
+2.	Quantidade em estoque atualizada.
+3.	Nota fiscal gerada.
+
+•	Fluxo Principal:
+O atendente acessa o sistema com login e senha.
+Seleciona a opção “Vender produtos”.
+Pesquisa ou seleciona o(s) produto(s) desejado(s).
+Informa a quantidade a ser vendida.
+Informa os dados do cliente 
+Finaliza a venda.
+O sistema registra a venda e atualiza o estoque.
+O sistema exibe uma confirmação e retorna ao menu principal.
+
+•	Fluxos Alternativos:
+Produto fora de estoque
+Após selecionar o produto e informar a quantidade, o sistema detecta que não há unidades suficientes em estoque.
+Exibe mensagem de erro: "Estoque insuficiente para a quantidade informada."
+O atendente pode:
+
+1.	Reduzir a quantidade e tentar novamente, ou
+2.	Cancelar a operação.
+
+
